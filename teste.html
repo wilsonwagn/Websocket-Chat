@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <script>
+        const socket = new WebSocket("ws://localhost:8000/ws");
+
+        socket.onopen = () => {
+            socket.send("Olá, servidor WebSocket!");
+        };
+
+        socket.onmessage = (event) => {
+            console.log("O servidor diz: " + event.data);
+        };
+        // Feche a conexão Websocket quando terminar
+        socket.onclose = () => {
+            console.log("Conexão WebSocket fechada.");
+        };
+    </script>
+</body>
+</html>
