@@ -1,4 +1,4 @@
-# Projeto WebSocket com FastAPI e Docker
+# Chat — WebSocket com FastAPI, Python e Docker
 
 Este projeto implementa uma aplicação de Chat com WebSocket utilizando FastAPI no Python, Docker-Compose, e Banco de Dados NoSQL com MongoDB.
 
