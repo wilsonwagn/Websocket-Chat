@@ -17,7 +17,7 @@ manager = ConnectionManager()
 #>>> Front-End:
 @app.get("/")
 async def get():
-    with open("./testeChat.html", "r", encoding="utf-8") as f:
+    with open("./chatFront.html", "r", encoding="utf-8") as f:
         html = f.read()
     return HTMLResponse(html)
 
