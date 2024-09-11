@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/app/static/styles.css">
+</head>
+<body>
+    <div id="container">
+        <h1>CHAT</h1>
+        <h3>O seu ID/usuário: <span id="ws-id"></span></h3>
+        
+        <!-- Campo para inserir o nome + botão de enviar -->
+        <div>
+            <label for="clientName">Digite seu nome: </label>
+            <input type="text" id="clientName" placeholder="Ex: Douglas José..." autocomplete="off" />
+            <button onclick="storeName()">Enviar</button>
+        </div>
+        
+        <!-- Container para o chat -->
+        <div id="chatContainer">
+            <h2>Bem-vindo, <span id="ws-name"></span>!</h2>
+            <form action="" onsubmit="sendMessage(event)">
+                <label for="messageText">Mensagem:</label>
+                <input type="text" id="messageText" autocomplete="off" />
+                <button>Enviar</button>
+            </form>
+            <ul id="messages"></ul>
+        </div>
+    </div>
+    
+    <script src="/app/static/scripts.js"></script>
+</body>
+</html>

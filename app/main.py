@@ -1,24 +1,33 @@
 import json
-from fastapi import (
-    Cookie,
-    Depends,
-    FastAPI,
-    Query,
-    WebSocket,
-    WebSocketDisconnect)
+from fastapi import (FastAPI, WebSocket, WebSocketDisconnect)
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+
+from fastapi.templating import Jinja2Templates
+from starlette.requests import Request
+
 from app.websocket_manager import ConnectionManager
 from app.database import save_clients
 
 app = FastAPI()
 manager = ConnectionManager()   
+app.mount("/static", StaticFiles(directory="app/static"), name="static") #Montar a pasta estática com css e js
+templates = Jinja2Templates(directory="app/templates")
 
 #>>> Front-End:
 @app.get("/")
+async def get(request: Request):
+    return templates.TemplateResponse("chatFront.html", {"request": request})
+
+
+"""
+#>>> Front-End:
+@app.get("/")
 async def get():
-    with open("./chatFront.html", "r", encoding="utf-8") as f:
+    with open("./chatFront copy.html", "r", encoding="utf-8") as f:
         html = f.read()
     return HTMLResponse(html)
+"""
 
 #>>> BackEnd/WebSocket:
 @app.websocket("/ws/{client_id}")
