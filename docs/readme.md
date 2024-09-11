@@ -12,6 +12,17 @@ docker-compose up --build
 ```bash
 http://localhost:8000/
 ```
+## Funcionalidade de Salvamento de Dados
+Quando o cliente digita seu nome e envia, os dados do cliente:
+
+```bash
+{
+  "client_id": 1627398193,
+  "client_name": "João",
+  "connected_at": "2023-09-05 10:30:45"
+}
+```
+são salvos automaticamente no banco de dados MongoDB.
 
 ## Dependências
 As dependências do projeto estão listadas em `requirements.txt` e incluem:
@@ -20,3 +31,4 @@ As dependências do projeto estão listadas em `requirements.txt` e incluem:
 - Websockets
 - Pymongo
 - Entre outros
+
