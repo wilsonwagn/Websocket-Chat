@@ -7,9 +7,8 @@ from fastapi import (
     WebSocket,
     WebSocketDisconnect)
 from fastapi.responses import HTMLResponse
-
 from app.websocket_manager import ConnectionManager
-
+from app.database import save_clients
 
 app = FastAPI()
 manager = ConnectionManager()   
@@ -30,17 +29,21 @@ async def websocket_endpoint2(websocket: WebSocket, client_id: int):
         while True:
             data = await websocket.receive_text()
             message_data = json.loads(data) #Lendo o JSON enviado do cliente!
-            #message_dateHour = json.loads(data)
 
             #Ao se conectar:
             if message_data["type"] == "name":
+
                 manager.clients[client_id] = message_data["name"]
+                save_clients(client_id, message_data["name"], message_data.get("timestamp", "Sem data/hora de acesso"))
                 await manager.broadcast(f"{message_data['name']} entrou no chat")
 
             # Ao enviar mensagens:
             elif message_data["type"] == "message":
+
                 client_name = manager.clients.get(client_id, "Cliente desconhecido")
                 timestamp = message_data.get("timestamp", "Sem hora") 
+
+                #Salvando o cliente no banco!
                 await manager.broadcast(f"{timestamp} | {client_name} disse: {message_data['message']}")
             
     except WebSocketDisconnect:

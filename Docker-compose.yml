@@ -6,8 +6,12 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
-    #depends_on:
-    #  - db
+    depends_on:
+      - mongodb
 
-  #db:
+  mongodb:
+    image: mongo:latest # Imagem mais recente do MongoDB
+    container_name: websocket-chat-mongo
+    ports:
+      - "27017:27017"  # Expondo a porta 27017 para acessar o MongoDB
+    
