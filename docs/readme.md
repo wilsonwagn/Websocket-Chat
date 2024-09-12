@@ -2,6 +2,8 @@
 
 Projeto de Chat com WebSocket usando FastAPI, Docker-Compose e MongoDB.
 
+![Visuais](../visuals.gif)
+
 ## Pré-requisitos: Ambiente Virtual
 
 Antes de começar, é necessário criar e ativar um ambiente virtual para gerenciar as dependências de forma isolada. Siga os passos abaixo:
