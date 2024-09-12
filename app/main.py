@@ -1,6 +1,5 @@
 import json
 from fastapi import (FastAPI, WebSocket, WebSocketDisconnect)
-from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from fastapi.templating import Jinja2Templates
@@ -18,16 +17,6 @@ templates = Jinja2Templates(directory="app/templates")
 @app.get("/")
 async def get(request: Request):
     return templates.TemplateResponse("chatFront.html", {"request": request})
-
-
-"""
-#>>> Front-End:
-@app.get("/")
-async def get():
-    with open("./chatFront copy.html", "r", encoding="utf-8") as f:
-        html = f.read()
-    return HTMLResponse(html)
-"""
 
 #>>> BackEnd/WebSocket:
 @app.websocket("/ws/{client_id}")
