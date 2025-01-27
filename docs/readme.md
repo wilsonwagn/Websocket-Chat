@@ -15,8 +15,20 @@ Antes de começar, é necessário criar e ativar um ambiente virtual para gerenc
   ```bash
    venv\Scripts\activate
   ````
+2. Instale as dependências
+  ```bash
+    pip install -r requirements.txt
+  ````
+3. Configure o Python no VS Code
+   
+    Certifique-se de que o VS Code está usando o Python do ambiente virtual:
+    - Abra o Comando Rápido: Ctrl + Shift + P (ou Cmd + Shift + P no macOS).
+    - Digite e selecione Python: Select Interpreter.
+    - Escolha o caminho do Python do seu ambiente virtual (venv).
+ 
 ## Instruções para Execução
 1. Construir e iniciar os serviços Docker:
+  - Abra o Docker Desktop, antes de rodar o código abaixo!
   ```bash
   docker-compose up --build
   ```
